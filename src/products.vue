@@ -20,7 +20,6 @@ const products = [
     </div>
   </div>
 </template>
-
 <style scoped>
   div > div {
     margin-bottom: 20px;

@@ -1,48 +1,43 @@
 <script setup>
-import {useTabs} from './composeAbles/useTabs';
-const {activeTab, setActiveTab} = useTabs();
+import { useTabs } from './composeAbles/useTabs';
+const { activeTab, setActiveTab } = useTabs();
 </script>
 
 <template>
     <div class="sidebar">
         <!-- Main Navigation -->
         <ul class="sidebar-nav">
-            <li  class="nav-item">
-                <a href="#" class="nav-link"
-                :class="{active : activeTab === 'overview'}"
-                @click.prevent="setActiveTab ( 'overview')">
+            <li class="nav-item">
+                <a href="#" class="nav-link" :class="{ active: activeTab === 'overview' }"
+                    @click.prevent="setActiveTab('overview')">
                     <i class="bi bi-file-text nav-icon"></i>
                     Orders
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link"
-                :class="{active : activeTab === 'gallery'}"
-                @click.prevent="setActiveTab ( 'gallery')">
+                <a href="#" class="nav-link" :class="{ active: activeTab === 'gallery' }"
+                    @click.prevent="setActiveTab('gallery')">
                     <i class="bi bi-cart nav-icon"></i>
                     Gallery
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link"
-                :class="{active : activeTab === 'products'}"
-                @click.prevent="setActiveTab ( 'products')">
+                <a href="#" class="nav-link" :class="{ active: activeTab === 'products' }"
+                    @click.prevent="setActiveTab('products')">
                     <i class="bi bi-people nav-icon"></i>
                     Products
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link"
-                :class="{active : activeTab === 'customers'}"
-                @click.prevent="setActiveTab ( 'customers')">
+                <a href="#" class="nav-link" :class="{ active: activeTab === 'customers' }"
+                    @click.prevent="setActiveTab('customers')">
                     <i class="bi bi-graph-up nav-icon"></i>
                     Customers
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link"
-                :class="{active : activeTab === 'reports'}"
-                @click.prevent="setActiveTab ( 'reports')">
+                <a href="#" class="nav-link" :class="{ active: activeTab === 'reports' }"
+                    @click.prevent="setActiveTab('reports')">
                     <i class="bi bi-puzzle nav-icon"></i>
                     Reports
                 </a>
@@ -52,7 +47,8 @@ const {activeTab, setActiveTab} = useTabs();
         <!-- Saved Reports Section -->
         <div class="section-header">
             Saved Reports
-            <div class="add-btn">+</div>
+            <div class="add-btn btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">+
+            </div>
         </div>
         <ul class="sidebar-nav">
             <li class="nav-item">
@@ -99,6 +95,51 @@ const {activeTab, setActiveTab} = useTabs();
             </ul>
         </div>
     </div>
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content shadow-lg">
+                <form id="reportForm">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="reportModalLabel">Report an Issue</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <!-- Modal Body with Form -->
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="productName" class="form-label">Product Name</label>
+                            <input type="text" class="form-control" id="productName" placeholder="e.g., Wireless Mouse"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="issueType" class="form-label">Type of Issue</label>
+                            <select class="form-select" id="issueType" required>
+                                <option value="" selected disabled>Select an issue...</option>
+                                <option value="defective">Defective Product</option>
+                                <option value="shipping">Shipping Damage</option>
+                                <option value="missing_parts">Missing Parts</option>
+                                <option value="wrong_item">Wrong Item Received</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control" id="description" rows="4"
+                                placeholder="Please describe the issue in detail..." required></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Modal Footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Submit Report</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </template>
 
 <style scoped>
@@ -129,11 +170,13 @@ const {activeTab, setActiveTab} = useTabs();
 .sidebar::-webkit-scrollbar-thumb:hover {
     background-color: #5dade2;
 }
+
 .sidebar-nav {
     list-style: none;
     padding: 0;
     margin: 0;
 }
+
 .nav-item {
     border-bottom: 1px solid #34495e;
 }

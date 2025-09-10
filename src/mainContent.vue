@@ -1,21 +1,39 @@
 <script setup>
+import { ref } from 'vue';
 import gallery from './gallery.vue';
 import products from './products.vue';
 import customers from './customers.vue';
 import reports from './reports.vue';
-import {useTabs} from './composeAbles/useTabs';
-const {activeTab, setActiveTab} = useTabs();
+import createOrder from './createOrder.vue';
+// import googleSearch from './googleSearch.vue';
+import { useTabs } from './composeAbles/useTabs';
+const { activeTab, setActiveTab } = useTabs();
+
+const isCreateOrderVisible = ref(false);
+
+function openCreateOrder() {
+  isCreateOrderVisible.value = true;
+}
+
+function closeCreateOrder() {
+  isCreateOrderVisible.value = false;
+}
 </script>
 
 <template>
   <div class="dynamic-content">
     <div class="content-box">
       <div class="tab-container">
-        <button class="tab-button" :class="{ active: activeTab === 'overview' }" @click="setActiveTab('overview')" data-tab="overview" ref="overview">Orders</button>
-        <button class="tab-button" :class="{ active: activeTab === 'gallery' }" @click="setActiveTab('gallery')" data-tab="gallery">Gallery</button>
-        <button class="tab-button" :class="{ active: activeTab === 'products' }" @click="setActiveTab('products')" data-tab="presentations">Products</button>
-        <button class="tab-button" :class="{ active: activeTab === 'customers' }" @click="setActiveTab('customers')" data-tab="documents">Customers</button>
-        <button class="tab-button" :class="{ active: activeTab === 'reports' }" @click="setActiveTab('reports')" data-tab="media">Reports</button>
+        <button class="tab-button" :class="{ active: activeTab === 'overview' }" @click="setActiveTab('overview')"
+          data-tab="overview" ref="overview">Orders</button>
+        <button class="tab-button" :class="{ active: activeTab === 'gallery' }" @click="setActiveTab('gallery')"
+          data-tab="gallery">Gallery</button>
+        <button class="tab-button" :class="{ active: activeTab === 'products' }" @click="setActiveTab('products')"
+          data-tab="presentations">Products</button>
+        <button class="tab-button" :class="{ active: activeTab === 'customers' }" @click="setActiveTab('customers')"
+          data-tab="documents">Customers</button>
+        <button class="tab-button" :class="{ active: activeTab === 'reports' }" @click="setActiveTab('reports')"
+          data-tab="media">Reports</button>
       </div>
       <div class="tab-content " v-if="activeTab === 'overview'">
         <div class="p-0 text-center bg-body-tertiary rounded-3" bis_skin_checked="1"> <svg class="bi mt-0 mb-0"
@@ -28,7 +46,7 @@ const {activeTab, setActiveTab} = useTabs();
             wraps
             early thanks to a responsive <code>.col-*</code> class, and a customized call to action.
           </p>
-          <div class="d-inline-flex gap-2 mb-5" bis_skin_checked="1"> <button
+          <div class="d-inline-flex gap-2 mb-5" bis_skin_checked="1"> <button @click="openCreateOrder"
               class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill" type="button">
               Create Your order
               <svg class="bi ms-2" width="24" height="24" aria-hidden="true">
@@ -40,7 +58,7 @@ const {activeTab, setActiveTab} = useTabs();
         </div>
       </div>
       <div class="Gallery" v-if="activeTab === 'gallery'">
-        <gallery  />
+        <gallery />
       </div>
       <div class="Products" v-if="activeTab === 'products'">
         <products />
@@ -51,6 +69,7 @@ const {activeTab, setActiveTab} = useTabs();
       <div v-if="activeTab === 'reports'">
         <reports />
       </div>
+      <createOrder :isVisible="isCreateOrderVisible" @close="closeCreateOrder" />
     </div>
   </div>
 </template>
@@ -64,16 +83,19 @@ const {activeTab, setActiveTab} = useTabs();
   justify-content: center;
   background-color: rgb(248, 249, 250);
 }
-.Gallery{
+
+.Gallery {
   overflow: auto;
 }
-.Products{
+
+.Products {
   overflow: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
+
 .content-box {
   border: 1px solid #ddd;
   height: 70vh;

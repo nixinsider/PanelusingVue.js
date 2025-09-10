@@ -2,7 +2,7 @@
 
 </script>
 <template>
-<h1>This is the reports page</h1>
+<h1>No reports yet</h1>
 </template>
 <style>
 

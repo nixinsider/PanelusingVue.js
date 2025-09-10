@@ -1,0 +1,56 @@
+[
+    {
+        "name": "John Doe",
+        "email": "johndoe@example.com",
+        "phone": "123-456-7890",
+        "address": "123 Main St, Anytown, USA"
+    },
+    {
+        "name": "Jane Smith",
+        "email": "janesmith@example.com",
+        "phone": "987-654-3210",
+        "address": "456 Elm St, Anytown, USA"
+    },
+    {
+        "name": "Bob Johnson",
+        "email": "bobjohnson@example.com",
+        "phone": "555-123-4567",
+        "address": "789 Oak St, Anytown, USA"
+    },
+    {
+        "name": "Alice Brown",
+        "email": "alicebrown@example.com",
+        "phone": "555-789-0123",
+        "address": "321 Pine St, Anytown, USA"
+    },
+    {
+        "name": "David Lee",
+        "email": "davidlee@example.com",
+        "phone": "555-432-9876",
+        "address": "654 Maple St, Anytown, USA"
+    },
+    {
+        "name": "Emily Davis",
+        "email": "emilydavis@example.com",
+        "phone": "555-654-3210",
+        "address": "987 Oak St, Anytown, USA"
+    },
+    {
+        "name": "Michael Johnson",
+        "email": "michaeljohnson@example.com",
+        "phone": "555-321-9876",
+        "address": "321 Pine St, Anytown, USA"
+    },
+    {
+        "name": "Noman Ali",
+        "email": "nomanali@example.com",
+        "phone": "123-456-7890",
+        "address": "123 Main St, Anytown, USA"
+    },
+    {
+        "name": " nafio jafij",
+        "email": "jfajfafj@example.com",
+        "phone": "123-456-7890",
+        "address": "123 Main St, Anytown, USA"
+    }
+]

@@ -29,11 +29,11 @@ function closeCreateOrder() {
         <button class="tab-button" :class="{ active: activeTab === 'gallery' }" @click="setActiveTab('gallery')"
           data-tab="gallery">Gallery</button>
         <button class="tab-button" :class="{ active: activeTab === 'products' }" @click="setActiveTab('products')"
-          data-tab="presentations">Products</button>
+          data-tab="products">Products</button>
         <button class="tab-button" :class="{ active: activeTab === 'customers' }" @click="setActiveTab('customers')"
-          data-tab="documents">Customers</button>
+          data-tab="customers">Customers</button>
         <button class="tab-button" :class="{ active: activeTab === 'reports' }" @click="setActiveTab('reports')"
-          data-tab="media">Reports</button>
+          data-tab="reports">Reports</button>
       </div>
       <div class="tab-content " v-if="activeTab === 'overview'">
         <div class="p-0 text-center bg-body-tertiary rounded-3" bis_skin_checked="1"> <svg class="bi mt-0 mb-0"
@@ -63,10 +63,10 @@ function closeCreateOrder() {
       <div class="Products" v-if="activeTab === 'products'">
         <products />
       </div>
-      <div v-if="activeTab === 'customers'">
+      <div class="Customers" v-if="activeTab === 'customers'">
         <customers />
       </div>
-      <div v-if="activeTab === 'reports'">
+      <div class="Reports" v-if="activeTab === 'reports'">
         <reports />
       </div>
       <createOrder :isVisible="isCreateOrderVisible" @close="closeCreateOrder" />
@@ -87,7 +87,9 @@ function closeCreateOrder() {
 .Gallery {
   overflow: auto;
 }
-
+.Customers{
+  overflow: auto;
+}
 .Products {
   overflow: auto;
   display: flex;
@@ -95,7 +97,11 @@ function closeCreateOrder() {
   justify-content: center;
   align-items: center;
 }
-
+.Reports{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .content-box {
   border: 1px solid #ddd;
   height: 70vh;

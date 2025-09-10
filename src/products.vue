@@ -25,6 +25,7 @@ import { products } from './store.js';
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
+  margin-top: 20px;
   text-align: center;
 }
 

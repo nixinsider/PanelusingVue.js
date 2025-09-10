@@ -1,13 +1,9 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
-// https://vite.dev/config/
+// https://vitejs.dev/config/
 export default defineConfig({
+  // Set the base path to your repository name
+  base: '/PanelusingVue.js/', 
   plugins: [vue()],
 })
-// vue.config.js
-module.exports = {
-  publicPath: process.env.NODE_ENV === 'production'
-    ? '/PanelusingVue.js/'
-    : '/'
-}

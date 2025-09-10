@@ -24,6 +24,7 @@ import mainContent from './mainContent.vue';
   height: 100vh;
   padding: 0;
   margin: 0;
+  overflow: hidden;
 }
 
 .row {

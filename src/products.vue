@@ -1,31 +1,49 @@
 <script setup>
-// Let's use a more realistic array of products
-const products = [
-  { id: 999, imageUrl: 'https://picsum.photos/600/400?random=1' },
-  { id: 1000, imageUrl: 'https://picsum.photos/600/400?random=2' },
-  { id: 1001, imageUrl: 'https://picsum.photos/600/400?random=3' }
-];
+import { products } from './store.js';
 </script>
 
 <template>
-  <h1>This is the products page</h1>
-  <div>
-    <div v-for="product in products" :key="product.id">
-      <img :src="product.imageUrl" alt="Product Image">
-      
-      <router-link 
-        :to="{ name: 'ProductDetail', query: { id: product.id, imageUrl: product.imageUrl } }">
-        View Details for Product {{ product.id }}
-      </router-link>
+  <!-- <h1>Products</h1> -->
+  <div class="products-grid">
+    <div v-for="(product, index) in products" :key="index" class="product-card">
+      <img :src="product.image.thumbnail" :alt="product.name">
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.category }}</p>
+      <p class="price">${{ product.price.toFixed(2) }}</p>
     </div>
   </div>
 </template>
+
 <style scoped>
-  div > div {
-    margin-bottom: 20px;
-  }
-  img {
-    display: block;
-    margin-bottom: 5px;
-  }
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+
+.product-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.product-card h3 {
+  margin: 10px 0;
+}
+
+.product-card p {
+  margin: 5px 0;
+}
+
+.price {
+  font-weight: bold;
+  color: #007bff;
+}
 </style>

@@ -1,5 +1,6 @@
 <script setup>
 import { ref, defineProps, defineEmits } from 'vue';
+import { globalImage } from './store.js';
 
 // Props for controlling modal visibility from parent
 const props = defineProps({
@@ -35,6 +36,7 @@ const handleFile = (file) => {
     const reader = new FileReader();
     reader.onload = (e) => {
       imagePreviewUrl.value = e.target.result;
+      globalImage.value = e.target.result; // Update global store with image preview URL
     };
     reader.readAsDataURL(file);
   } else {
@@ -64,6 +66,7 @@ const onDrop = (event) => {
 const removeImage = () => {
     imagePreviewUrl.value = null;
     imageFile.value = null;
+    globalImage.value = null; // Reset global image
 };
 const image = imagePreviewUrl;
 // --- Form Submission ---
@@ -136,7 +139,7 @@ const handleSubmit = () => {
               <div v-if="!imagePreviewUrl" class="drop-zone-prompt">
                 <label for="fileInput">
                   <p><strong>Drag & drop an image here</strong></p>
-                  <p>or <span>click to browse</span></p>
+                  <p>or <span style="cursor: pointer;" >click to browse</span></p>
                 </label>
               </div>
 
